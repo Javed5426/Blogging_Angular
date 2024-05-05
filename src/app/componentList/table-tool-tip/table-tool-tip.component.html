@@ -1,0 +1,40 @@
+<h1>
+    Hover On any table data
+</h1>
+
+<h1>Dynamic Table</h1>
+
+<table>
+    <tr>
+        <th>Sr No.</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tr *ngFor='let item of API_Response'>
+        <td>{{item.srNo}}</td>
+        <td style="text-decoration: 
+        underline; color: blue;
+        cursor: pointer;" (mouseenter)="showTooltip( API_Response, $event)" (mouseleave)="hideTooltip()">
+            {{item.name}}
+        </td>
+        <td>{{item.email}}</td>
+    </tr>
+</table>
+
+<!-- =============[ Tooltip table ]============= -->
+
+<table *ngIf="showTooltipFlag"
+ class="tooltipText  tooltipTable"
+ [style.left]="tooltipPos.x+'px'"
+ [style.top]="tooltipPos.y+'px'">
+    <tr>
+        <th>Sr No.</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tr *ngFor='let item of tooltipDs'>
+        <td>{{item.srNo}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+    </tr>
+</table>
